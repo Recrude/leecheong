@@ -1,9 +1,9 @@
 // 이미지 데이터
 const imageFolders = [
-    'src/images/webp/shade-of-blue',
-    'src/images/webp/the-faceless',
-    'src/images/webp/pigeon-hunting',
-    'src/images/webp/imperfect-financier'
+    '/images/webp/shade-of-blue',
+    '/images/webp/the-faceless',
+    '/images/webp/pigeon-hunting',
+    '/images/webp/imperfect-financier'
 ];
 
 // 이미지 파일 목록을 저장할 배열
