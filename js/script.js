@@ -6,6 +6,98 @@ const imageFolders = [
     '/images/webp/imperfect-financier'
 ];
 
+// 정적 이미지 목록
+const staticImageList = {
+    '/images/webp/shade-of-blue': [
+        '/images/webp/shade-of-blue/shade-of-blue_1-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_2-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_3-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_4-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_5-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_6-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_7-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_8-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_9-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_10-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_11-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_12-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_13-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_14-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_15-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_16-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_17-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_18-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_19-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_20-min.webp'
+    ],
+    '/images/webp/the-faceless': [
+        '/images/webp/the-faceless/the-faceless_1-min.webp',
+        '/images/webp/the-faceless/the-faceless_2-min.webp',
+        '/images/webp/the-faceless/the-faceless_3-min.webp',
+        '/images/webp/the-faceless/the-faceless_4-min.webp',
+        '/images/webp/the-faceless/the-faceless_5-min.webp',
+        '/images/webp/the-faceless/the-faceless_6-min.webp',
+        '/images/webp/the-faceless/the-faceless_7-min.webp',
+        '/images/webp/the-faceless/the-faceless_8-min.webp',
+        '/images/webp/the-faceless/the-faceless_9-min.webp',
+        '/images/webp/the-faceless/the-faceless_10-min.webp',
+        '/images/webp/the-faceless/the-faceless_11-min.webp',
+        '/images/webp/the-faceless/the-faceless_12-min.webp',
+        '/images/webp/the-faceless/the-faceless_13-min.webp',
+        '/images/webp/the-faceless/the-faceless_14-min.webp',
+        '/images/webp/the-faceless/the-faceless_15-min.webp',
+        '/images/webp/the-faceless/the-faceless_16-min.webp',
+        '/images/webp/the-faceless/the-faceless_17-min.webp',
+        '/images/webp/the-faceless/the-faceless_18-min.webp',
+        '/images/webp/the-faceless/the-faceless_19-min.webp',
+        '/images/webp/the-faceless/the-faceless_20-min.webp'
+    ],
+    '/images/webp/pigeon-hunting': [
+        '/images/webp/pigeon-hunting/pigeon-hunting_1-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_2-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_3-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_4-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_5-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_6-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_7-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_8-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_9-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_10-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_11-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_12-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_13-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_14-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_15-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_16-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_17-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_18-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_19-min.webp',
+        '/images/webp/pigeon-hunting/pigeon-hunting_20-min.webp'
+    ],
+    '/images/webp/imperfect-financier': [
+        '/images/webp/imperfect-financier/imperfect-financier_1-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_2-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_3-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_4-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_5-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_6-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_7-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_8-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_9-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_10-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_11-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_12-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_13-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_14-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_15-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_16-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_17-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_18-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_19-min.webp',
+        '/images/webp/imperfect-financier/imperfect-financier_20-min.webp'
+    ]
+};
+
 // 이미지 파일 목록을 저장할 배열
 let allImages = [];
 let displayedImages = [];
@@ -29,28 +121,16 @@ const loadingPage = document.getElementById('loading-page');
 // 이미지 파일 목록 가져오기
 async function fetchImageList() {
     try {
-        // 각 폴더에서 이미지 파일 목록 가져오기
-        const imagePromises = imageFolders.map(folder => {
-            return fetch(`/api/images?folder=${encodeURIComponent(folder)}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .catch(error => {
-                    console.error(`Failed to fetch images from ${folder}:`, error);
-                    return [];
-                });
-        });
-
-        const folderResults = await Promise.all(imagePromises);
+        // 정적 이미지 목록에서 모든 이미지 경로를 하나의 배열로 합치기
+        allImages = [];
         
-        // 모든 이미지 파일 경로를 하나의 배열로 합치기
-        allImages = folderResults.flat().map(imagePath => ({
-            path: imagePath,
-            folder: imagePath.split('/')[3] // 폴더 이름 추출
-        }));
+        for (const folder in staticImageList) {
+            const images = staticImageList[folder].map(imagePath => ({
+                path: imagePath,
+                folder: folder.split('/').pop() // 폴더 이름 추출
+            }));
+            allImages = allImages.concat(images);
+        }
         
         // 이미지 배열 섞기
         shuffleArray(allImages);
