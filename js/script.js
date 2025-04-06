@@ -80,6 +80,12 @@ function startInitialAnimation() {
         setTimeout(() => {
             loadingPage.style.display = 'none';
             loadingPage.classList.remove('slide-up');
+            
+            // 이미지 그리드 표시
+            imageGrid.classList.add('loaded');
+            
+            // 그리드 열 변환 애니메이션 시작
+            startGridColumnAnimation();
         }, 1000);
     }, 1500);
 }
