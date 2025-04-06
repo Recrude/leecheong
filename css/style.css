@@ -183,32 +183,30 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
-    opacity: 1;
-    transition: opacity 1s ease;
+    z-index: 9999;
+    transform: translateY(0);
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.loading-page.fade-out {
-    opacity: 0;
-}
-
-.loading-page.hidden {
-    display: none;
+.loading-page.slide-up {
+    transform: translateY(-100%);
 }
 
 .loading-logo {
-    width: 80vw;
+    width: 200px;
     height: auto;
-    animation: fade 1.5s infinite alternate;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
-@keyframes fade {
-    0% {
-        opacity: 0.3;
-    }
-    100% {
-        opacity: 1;
-    }
+/* 로딩 인디케이터 스타일 */
+.loading-indicator {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
 }
 
 /* 이미지 그리드 스타일 */
@@ -309,19 +307,6 @@ main {
 .image-item.square {
     grid-column: span 1;
     grid-row: span 1;
-}
-
-/* 로딩 인디케이터 스타일 */
-.loading-indicator {
-    display: none;
-    text-align: center;
-    padding: 2rem;
-    font-size: 1.2rem;
-    color: #666;
-}
-
-.loading-indicator.active {
-    display: block;
 }
 
 /* 갤러리 모달 스타일 */

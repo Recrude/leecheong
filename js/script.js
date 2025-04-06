@@ -67,26 +67,21 @@ async function fetchImageList() {
     }
 }
 
-// 초기 로딩 애니메이션 시작
+// 초기 로딩 애니메이션
 function startInitialAnimation() {
     // 로딩 페이지 표시
-    loadingPage.classList.remove('hidden');
+    loadingPage.style.display = 'flex';
     
-    // 1초 후 로딩 페이지 페이드아웃
+    // 이미지 로드가 완료되면 슬라이드 업 애니메이션 실행
     setTimeout(() => {
-        loadingPage.classList.add('fade-out');
+        loadingPage.classList.add('slide-up');
         
-        // 페이드아웃 완료 후 로딩 페이지 숨김
+        // 애니메이션 완료 후 로딩 페이지 숨기기
         setTimeout(() => {
-            loadingPage.classList.add('hidden');
-            
-            // 이미지 그리드 표시
-            imageGrid.classList.add('loaded');
-            
-            // 그리드 열 변환 애니메이션 시작
-            startGridColumnAnimation();
+            loadingPage.style.display = 'none';
+            loadingPage.classList.remove('slide-up');
         }, 1000);
-    }, 1000);
+    }, 1500);
 }
 
 // 그리드 열 변환 애니메이션 시작
