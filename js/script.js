@@ -6,6 +6,60 @@ const imageFolders = [
     '/images/webp/imperfect-jeonju'
 ];
 
+// 하드코딩된 이미지 리스트
+const staticImageList = {
+    '/images/webp/shade-of-blue': [
+        '/images/webp/shade-of-blue/shade-of-blue_1-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_2-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_3-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_4-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_5-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_6-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_7-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_8-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_9-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_10-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_11-min.webp',
+        '/images/webp/shade-of-blue/shade-of-blue_12-min.webp'
+    ],
+    '/images/webp/the-faceless': [
+        '/images/webp/the-faceless/the-faceless_1-min.webp',
+        '/images/webp/the-faceless/the-faceless_2-min.webp',
+        '/images/webp/the-faceless/the-faceless_3-min.webp',
+        '/images/webp/the-faceless/the-faceless_4-min.webp',
+        '/images/webp/the-faceless/the-faceless_5-min.webp',
+        '/images/webp/the-faceless/the-faceless_6-min.webp',
+        '/images/webp/the-faceless/the-faceless_7-min.webp',
+        '/images/webp/the-faceless/the-faceless_8-min.webp',
+        '/images/webp/the-faceless/the-faceless_9-min.webp',
+        '/images/webp/the-faceless/the-faceless_10-min.webp'
+    ],
+    '/images/webp/glass-eye': [
+        '/images/webp/glass-eye/glass-eye_1-min.webp',
+        '/images/webp/glass-eye/glass-eye_2-min.webp',
+        '/images/webp/glass-eye/glass-eye_3-min.webp',
+        '/images/webp/glass-eye/glass-eye_4-min.webp',
+        '/images/webp/glass-eye/glass-eye_5-min.webp',
+        '/images/webp/glass-eye/glass-eye_6-min.webp',
+        '/images/webp/glass-eye/glass-eye_7-min.webp',
+        '/images/webp/glass-eye/glass-eye_8-min.webp',
+        '/images/webp/glass-eye/glass-eye_9-min.webp',
+        '/images/webp/glass-eye/glass-eye_10-min.webp'
+    ],
+    '/images/webp/imperfect-jeonju': [
+        '/images/webp/imperfect-jeonju/imperfect-jeonju_1-min.webp',
+        '/images/webp/imperfect-jeonju/imperfect-jeonju_2-min.webp',
+        '/images/webp/imperfect-jeonju/imperfect-jeonju_3-min.webp',
+        '/images/webp/imperfect-jeonju/imperfect-jeonju_4-min.webp',
+        '/images/webp/imperfect-jeonju/imperfect-jeonju_5-min.webp',
+        '/images/webp/imperfect-jeonju/imperfect-jeonju_6-min.webp',
+        '/images/webp/imperfect-jeonju/imperfect-jeonju_7-min.webp',
+        '/images/webp/imperfect-jeonju/imperfect-jeonju_8-min.webp',
+        '/images/webp/imperfect-jeonju/imperfect-jeonju_9-min.webp',
+        '/images/webp/imperfect-jeonju/imperfect-jeonju_10-min.webp'
+    ]
+};
+
 // 이미지 파일 목록을 저장할 배열
 let allImages = [];
 let displayedImages = [];
@@ -29,28 +83,20 @@ const loadingPage = document.getElementById('loading-page');
 // 이미지 파일 목록 가져오기
 async function fetchImageList() {
     try {
-        // 각 폴더에서 이미지 파일 목록 가져오기
-        const imagePromises = imageFolders.map(folder => {
-            return fetch(`/api/images?folder=${encodeURIComponent(folder)}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .catch(error => {
-                    console.error(`Failed to fetch images from ${folder}:`, error);
-                    return [];
-                });
-        });
-
-        const folderResults = await Promise.all(imagePromises);
+        // 정적 이미지 리스트 사용
+        let combinedImages = [];
         
-        // 모든 이미지 파일 경로를 하나의 배열로 합치기
-        allImages = folderResults.flat().map(imagePath => ({
-            path: imagePath,
-            folder: imagePath.split('/')[3] // 폴더 이름 추출
-        }));
+        for (const folder of imageFolders) {
+            const images = staticImageList[folder] || [];
+            const folderImages = images.map(path => ({
+                path: path,
+                folder: path.split('/')[3] // 폴더 이름 추출
+            }));
+            combinedImages = [...combinedImages, ...folderImages];
+        }
+        
+        // 이미지 배열에 할당
+        allImages = combinedImages;
         
         // 이미지 배열 섞기
         shuffleArray(allImages);
@@ -61,7 +107,7 @@ async function fetchImageList() {
         // 초기 로딩 애니메이션 시작
         startInitialAnimation();
     } catch (error) {
-        console.error('Error fetching image list:', error);
+        console.error('Error processing image list:', error);
         // 오류 발생 시 대체 이미지 로드
         loadFallbackImages();
     }
@@ -109,14 +155,14 @@ function startGridColumnAnimation() {
     }, 2000 / 9); // 2초를 9단계로 나눔 (1->2->3->4->5->6->7->8->9->10)
 }
 
-// 대체 이미지 로드 (API 오류 시)
+// 대체 이미지 로드 (오류 시)
 function loadFallbackImages() {
     // 하드코딩된 이미지 경로 (예시)
     const fallbackImages = [
-        { path: '/images/webp/shade-of-blue/shade-of-blue_1.webp', folder: 'shade-of-blue' },
-        { path: '/images/webp/the-faceless/the-faceless_1.webp', folder: 'the-faceless' },
-        { path: '/images/webp/glass-eye/glass-eye_1.webp', folder: 'glass-eye' },
-        { path: '/images/webp/imperfect-jeonju/imperfect-jeonju_1.webp', folder: 'imperfect-jeonju' }
+        { path: '/images/webp/shade-of-blue/shade-of-blue_1-min.webp', folder: 'shade-of-blue' },
+        { path: '/images/webp/the-faceless/the-faceless_1-min.webp', folder: 'the-faceless' },
+        { path: '/images/webp/glass-eye/glass-eye_1-min.webp', folder: 'glass-eye' },
+        { path: '/images/webp/imperfect-jeonju/imperfect-jeonju_1-min.webp', folder: 'imperfect-jeonju' }
     ];
     
     allImages = fallbackImages;
@@ -146,7 +192,7 @@ function createImageElement(imageData) {
     // 이미지 로드 오류 처리
     img.onerror = function() {
         console.error(`이미지 로드 실패: ${imageData.path}`);
-        this.src = '/src/images/placeholder.webp'; // 대체 이미지
+        this.src = '/images/placeholder.webp'; // 대체 이미지
     };
     
     // 이미지 로드 완료 시 애니메이션 적용
