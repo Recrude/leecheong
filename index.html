@@ -30,8 +30,20 @@
     <meta name="twitter:image" content="/favicons/opengraph.png">
     
     <!-- CSS 파일 연결 -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link href="css/multilingual.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.typekit.net/umq6buz.css">
+    <script>
+        (function(d) {
+          var config = {
+            kitId: 'ovn6qqy',
+            scriptTimeout: 3000,
+            async: true
+          },
+          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+      </script>
+
 </head>
 <body>
     <!-- 로딩 페이지 -->
@@ -41,11 +53,19 @@
 
     <header>
         <div class="header-container">
-            <div class="header-title">이청 LEE CHEONG</div>
-            <nav class="header-nav">
-                <a href="/info/about.html" class="header-link">INFO</a>
-                <a href="/works/works.html" class="header-link">WORKS</a>
-            </nav>
+            <h1 class="site-title">
+                <a href="/">
+                    <img src="/svg/SVG/titlelogo-horizontal-black.svg" alt="이청 로고" class="site-logo">
+                </a>
+            </h1>
+            <div class="header-controls">
+                <nav>
+                    <ul>
+                        <li><h2><a href="/info/about.html">INFO</a></h2></li>
+                        <li><h2><a href="/works/works.html">WORKS</a></h2></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -58,8 +78,8 @@
         </div>
     </main>
 
-    <footer>
-        <div class="footer-container">
+    <footer class="multilingual">
+        <div class="footer-container multilingual">
             <p>&copy; 2025 이청. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
@@ -84,5 +104,12 @@
 
     <!-- JavaScript 파일 연결 -->
     <script src="/js/static-main.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.multilingual.min.js"></script>
+    <script>
+        $(function() {
+          $('.multilingual').multilingual(['ko', 'en', 'num', 'punct']);
+        });
+    </script>
 </body>
 </html>

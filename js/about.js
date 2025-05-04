@@ -1,3 +1,27 @@
+$(function() {
+  // 기존 multilingual 초기화는 그대로 둠
+  if ($('.multilingual').length && typeof $.fn.multilingual === 'function') {
+    $('.multilingual').multilingual(['ko', 'en', 'num', 'punct']);
+  }
+
+  // 서브 메뉴 동작
+  $('.submenu-btn').on('click', function() {
+    var target = $(this).data('target');
+    // 버튼 active 처리
+    $('.submenu-btn').removeClass('active');
+    $(this).addClass('active');
+    // 섹션 표시/숨김
+    $('.submenu-content').hide();
+    $('#' + target).show();
+  });
+
+  // 페이지 진입 시 소개가 먼저 보이도록 강제
+  $('.submenu-btn[data-target="about-section"]').addClass('active');
+  $('.submenu-btn[data-target="contact-section"]').removeClass('active');
+  $('#about-section').show();
+  $('#contact-section').hide();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // 서브메뉴 항목
     const submenuLinks = document.querySelectorAll('.submenu a');

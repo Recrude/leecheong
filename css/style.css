@@ -61,13 +61,15 @@ html {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "neue-haas-grotesk-display", "pretendard", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.6rem;
+    font-weight: 600;
     line-height: 1.6;
     color: black;
     background-color: #fff;
     min-height: 100vh;
     text-rendering: optimizeSpeed;
+    word-break: keep-all;
 }
 
 /* 이미지 기본 설정 */
@@ -83,6 +85,9 @@ a {
     text-decoration: none;
     color: inherit;
     background-color: transparent;
+}
+p a {
+    text-decoration: underline;
 }
 
 /* 목록 기본 설정 */
@@ -181,8 +186,7 @@ header {
     position: sticky;
     top: 0;
     background-color: #fff;
-    padding: 2rem;
-    padding-bottom: 1rem;
+    padding: 1.5rem;
     z-index: 100;
 }
 h2 {
@@ -193,74 +197,15 @@ h2 {
 }
 
 .header-container {
-    width: 90vw;
-    max-width: 1477px;
-    min-width: 320px;
-    aspect-ratio: 1477 / 222;
-    margin: 0 auto;
+    max-width: 100%;
+    height: 10vw;
     display: flex;
-    align-items: flex-end;
-    height: auto;
-    position: relative;
+    justify-content: space-between;
     padding: 0;
-}
-
-.header-title {
-    flex-basis: 81.5%; /* 첨부 이미지 기준 한글+영문 영역 비율 */
-    font-size: calc(180vw / 14.77);
-    font-family: 'Apple SD Gothic Neo', 'sans-serif';
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    white-space: nowrap;
-    display: flex;
-    align-items: flex-end;
-    padding: 0;
-    margin: 0;
-}
-
-.header-nav {
-    flex-basis: 18.5%; /* INFO/WORKS 영역 비율 */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
-    height: 100%;
-    gap: 0;
-    padding: 0;
-    margin: 0;
-}
-
-.header-link {
-    display: block;
-    font-size: calc(40vw / 14.77);
-    font-family: 'Apple SD Gothic Neo', 'sans-serif';
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    color: #000;
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-    transition: color 0.2s;
-}
-
-.header-link:hover,
-.header-link:focus {
-    color: #888;
-}
-
-@media (max-width: 600px) {
-    .header-container {
-        width: 100vw;
-        min-width: 0;
-    }
-    .header-title {
-        font-size: calc(80vw / 14.77);
-    }
-    .header-link {
-        font-size: calc(18vw / 14.77);
-    }
+    padding-bottom: 0;
+    margin-bottom: 0;
+    align-items: top;
+    align-self: flex-start;
 }
 
 .site-title {
@@ -273,7 +218,7 @@ h2 {
 }
 
 .site-title {
-    height: 13vw;
+    height: 100%;
     width: auto;
 }
 .site-logo {
@@ -288,8 +233,8 @@ h2 {
     gap: 2rem;
 }
 nav {
-    height: 13vh;
-    padding-top: 1.2vh;
+    padding-top: 1.3vw;
+    height: 100%;
 }
 
 nav ul {
@@ -302,13 +247,13 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    font-weight: 700;
-    letter-spacing: -0.07em;
+    font-weight: 600;
+    letter-spacing: -0.05em;
 
 }
 nav h2 {
     font-size: 4.6vw;
-    line-height: 0.5;
+    line-height: 0.55;
     align-items: bottom;
 
 }
@@ -317,8 +262,8 @@ nav h2 {
 /* 그리드 토글 버튼 스타일 */
 .grid-controls {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 1rem;
+    right: 1rem;
     z-index: 100;
 }
 
@@ -327,9 +272,9 @@ nav h2 {
     background-color: #000;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 2px;
     cursor: pointer;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
     transition: background-color 0.3s ease;
 }
@@ -605,7 +550,7 @@ footer {
 .footer-container {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 0rem;
 }
 
 /* 반응형 스타일 */

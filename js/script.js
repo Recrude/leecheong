@@ -1,3 +1,9 @@
+$(document).ready(function(e){
+    $(".multilingual").multilingual([
+      "en", "num", "punct", "ko"
+    ]);
+});
+
 // 이미지 데이터
 const imageFolders = [
     '/images/webp/shade-of-blue',
