@@ -26,6 +26,57 @@ document.addEventListener('DOMContentLoaded', () => {
     // 현재 표시된 갤러리 이미지 인덱스
     let currentImageIndex = 0;
     
+    // 이미지 경로 배열 (실제 파일명 기준, 예시)
+    const imageList = [
+        // shade-of-blue
+        "/images/webp/shade-of-blue/shade-of-blue_1-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_2-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_3-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_4-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_5-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_6-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_7-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_8-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_9-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_10-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_11-min.webp",
+        "/images/webp/shade-of-blue/shade-of-blue_12-min.webp",
+        // the-faceless (예시, 실제 파일명 모두 추가 필요)
+        "/images/webp/the-faceless/the-faceless_1-min.webp",
+        "/images/webp/the-faceless/the-faceless_2-min.webp",
+        "/images/webp/the-faceless/the-faceless_3-min.webp",
+        // ... (실제 모든 파일명 추가)
+        // glass-eye
+        "/images/webp/glass-eye/glass-eye_1-min.webp",
+        "/images/webp/glass-eye/glass-eye_2-min.webp",
+        // ...
+        // imperfect-jeonju
+        "/images/webp/imperfect-jeonju/imperfect-jeonju_1-min.webp",
+        "/images/webp/imperfect-jeonju/imperfect-jeonju_2-min.webp",
+        // ...
+    ];
+    
+    // Fisher-Yates 셔플
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    
+    const images = [...imageList];
+    shuffle(images);
+    images.forEach(src => {
+        const div = document.createElement('div');
+        div.className = 'image-item';
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = '이청의 사진';
+        img.loading = 'lazy';
+        div.appendChild(img);
+        imageGrid.appendChild(div);
+    });
+    
     // 초기 로딩 애니메이션
     function startInitialAnimation() {
         // 로딩 페이지 표시
