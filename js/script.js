@@ -1,9 +1,9 @@
 // 이미지 데이터
 const imageFolders = [
-    'src/images/webp/shade-of-blue',
-    'src/images/webp/the-faceless',
-    'src/images/webp/pigeon-hunting',
-    'src/images/webp/imperfect-financier'
+    '/images/webp/shade-of-blue',
+    '/images/webp/the-faceless',
+    '/images/webp/glass-eye',
+    '/images/webp/imperfect-jeonju'
 ];
 
 // 이미지 파일 목록을 저장할 배열
@@ -113,10 +113,10 @@ function startGridColumnAnimation() {
 function loadFallbackImages() {
     // 하드코딩된 이미지 경로 (예시)
     const fallbackImages = [
-        { path: '/src/images/webp/shade-of-blue/shade-of-blue_1-min.webp', folder: 'shade-of-blue' },
-        { path: '/src/images/webp/the-faceless/the-faceless_1-min.webp', folder: 'the-faceless' },
-        { path: '/src/images/webp/pigeon-hunting/pigeon-hunting_1-min.webp', folder: 'pigeon-hunting' },
-        { path: '/src/images/webp/imperfect-financier/imperfect-financier_1-min.webp', folder: 'imperfect-financier' }
+        { path: '/images/webp/shade-of-blue/shade-of-blue_1.webp', folder: 'shade-of-blue' },
+        { path: '/images/webp/the-faceless/the-faceless_1.webp', folder: 'the-faceless' },
+        { path: '/images/webp/glass-eye/glass-eye_1.webp', folder: 'glass-eye' },
+        { path: '/images/webp/imperfect-jeonju/imperfect-jeonju_1.webp', folder: 'imperfect-jeonju' }
     ];
     
     allImages = fallbackImages;

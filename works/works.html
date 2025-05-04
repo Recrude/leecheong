@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="이청의 포트폴리오 웹사이트 - 작품 페이지">
+    <meta name="keywords" content="이청, 사진, 포트폴리오, 갤러리, 작품">
+    <title>이청 - 작품</title>
+    
+    <!-- 파비콘 -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../src/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../src/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../src/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="../src/favicons/favicon.ico">
+    <link rel="shortcut icon" href="../src/favicons/favicon.ico">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- OpenGraph 메타 태그 -->
+    <meta property="og:title" content="이청 - 작품">
+    <meta property="og:description" content="이청의 포트폴리오 웹사이트 - 작품 페이지">
+    <meta property="og:image" content="https://leecheong.com/src/favicons/opengraph.png">
+    <meta property="og:url" content="https://leecheong.com/works/works.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="이청 LEECHEONG">
+    
+    <!-- Twitter 카드 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="이청 - 작품">
+    <meta name="twitter:description" content="이청의 포트폴리오 웹사이트 - 작품 페이지">
+    <meta name="twitter:image" content="https://leecheong.com/src/favicons/opengraph.png">
+    
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/works.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="site-title">
+                <a href="../index.html">
+                    <img src="../svg/SVG/titlelogo-horizontal-black.svg" alt="이청 로고" class="site-logo">
+                </a>
+            </h1>
+            <div class="header-controls">
+                <nav>
+                    <ul>
+                        <li><h2><a href="../info/about.html">INFO</a></h2></li>
+                        <li><h2><a href="works.html" class="active">WORKS</a></h2></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="works-section" id="photos">
+            <h2>PHOTOS</h2>
+            <div class="project-list">
+                <!-- 프로젝트 1 예시 -->
+                <div class="project-row">
+                    <div class="project-title-col">
+                        <h3>Shade of Blue</h3>
+                        <p>도시의 푸른 그림자를 탐구한 사진 프로젝트</p>
+                    </div>
+                    <div class="project-gallery-col" data-project="shade-of-blue">
+                        <!-- 이미지 갤러리 동적 생성 -->
+                    </div>
+                </div>
+                <!-- 프로젝트 2 예시 -->
+                <div class="project-row">
+                    <div class="project-title-col">
+                        <h3>The Faceless</h3>
+                        <p>익명성과 군중의 얼굴을 주제로 한 시리즈</p>
+                    </div>
+                    <div class="project-gallery-col" data-project="the-faceless">
+                        <!-- 이미지 갤러리 동적 생성 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="works-section" id="books">
+            <h2>BOOKS</h2>
+            <div class="project-list">
+                <div class="project-row">
+                    <div class="project-title-col">
+                        <h3>비둘기 사냥</h3>
+                        <p>2025년 출간 예정 사진집</p>
+                    </div>
+                    <div class="project-gallery-col" data-project="dummy-book">
+                        <img src="https://dummyimage.com/300x400/eee/aaa&text=BOOK+DEMO" alt="비둘기 사냥 더미 표지">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 이청. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript 파일 연결 -->
+    <script src="../js/works.js"></script>
+</body>
+</html> 

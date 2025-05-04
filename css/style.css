@@ -1,14 +1,60 @@
-/* CSS 리셋 */
+/* 확장된 CSS 리셋 (Normalize.css 기반) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+/* 스크롤바 숨기기 (모든 브라우저 대응) */
+html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* 모든 요소의 스크롤바 숨기기 */
+* {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
-/* HTML 기본 설정 */
 html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
     font-size: 62.5%; /* 1rem = 10px */
     scroll-behavior: smooth;
     font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;
@@ -18,8 +64,10 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.6rem;
     line-height: 1.6;
-    color: #333;
+    color: black;
     background-color: #fff;
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
 }
 
 /* 이미지 기본 설정 */
@@ -27,12 +75,14 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
+    border-style: none;
 }
 
 /* 링크 기본 설정 */
 a {
     text-decoration: none;
     color: inherit;
+    background-color: transparent;
 }
 
 /* 목록 기본 설정 */
@@ -46,12 +96,59 @@ button {
     background: none;
     cursor: pointer;
     font: inherit;
+    -webkit-appearance: button;
+    text-transform: none;
+    overflow: visible;
+    padding: 0;
 }
 
 /* 입력 필드 기본 설정 */
-input, textarea {
+input, textarea, select, button {
     font: inherit;
+    margin: 0;
+}
+
+input, textarea {
     border: 1px solid #ddd;
+}
+
+input {
+    overflow: visible;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+/* 헤딩 태그 스타일 조정 */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 2.4rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    word-spacing: -2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+p {
+    font-size: 1.8rem;
 }
 
 /* 컨테이너 클래스 */
@@ -83,32 +180,46 @@ header {
     position: sticky;
     top: 0;
     background-color: #fff;
-    padding: 1rem;
+    padding: 2rem;
+    padding-bottom: 1rem;
     z-index: 100;
+}
+h2 {
+    font-size: 6rem;
+    line-height: 0.8;
+    word-spacing: -2rem;
+
 }
 
 .header-container {
     max-width: 100%;
-    margin: 0 auto;
-    padding: 0 1rem;
+    height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    align-items: top;
+    align-self: flex-start;
 }
 
 .site-title {
-    font-size: 1.5rem;
-    font-weight: 600;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .site-title a {
     text-decoration: none;
-    color: #333;
 }
 
-.site-logo {
-    height: 20vh;
+.site-title {
+    height: 13vw;
     width: auto;
+}
+.site-logo {
+    height: 100%;
+    width: auto;
+    align-items: top;
 }
 
 .header-controls {
@@ -116,27 +227,32 @@ header {
     align-items: center;
     gap: 2rem;
 }
+nav {
+    height: 13vh;
+    padding-top: 1.2vh;
+}
 
 nav ul {
     display: flex;
     flex-direction: column;
     list-style: none;
-    gap: 0.5rem;
     margin-left: 2rem;
+    justify-content: space-between;
 }
 
 nav a {
     text-decoration: none;
-    color: #333;
     font-weight: 700;
-    font-size: 1.8rem;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    letter-spacing: 0.05em;
+    letter-spacing: -0.07em;
+
+}
+nav h2 {
+    font-size: 4.6vw;
+    line-height: 0.5;
+    align-items: bottom;
+
 }
 
-nav a.active {
-    border-bottom: 2px solid #333;
-}
 
 /* 그리드 토글 버튼 스타일 */
 .grid-controls {
@@ -338,9 +454,8 @@ main {
 
 .gallery-container {
     position: relative;
-    width: 90%;
-    max-width: 1200px;
-    height: 80vh; /* 세로 여백 확보 */
+    width: 80%;
+    max-height: 80vh; /* 세로 여백 확보 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -348,18 +463,25 @@ main {
 }
 
 .gallery-image-container {
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    max-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .gallery-image {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    max-height: 90vh;
     object-fit: contain;
     filter: none; /* 갤러리에서는 흑백 필터 제거 */
+}
+.gallery-image img {
+    max-height: 50vh;
+}
+
+#gallery-image {
+    max-height: 90vh;
 }
 
 .gallery-close {
@@ -416,7 +538,7 @@ main {
 footer {
     background-color: #fff;
     padding: 1rem;
-    text-align: center;
+    text-align: left;
     margin-top: 2rem;
 }
 
