@@ -15,45 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridToggle = document.getElementById('grid-toggle');
     const loadingPage = document.getElementById('loading-page');
     
-    // 모든 이미지 요소
-    const allImageItems = document.querySelectorAll('.image-item');
-    const allImages = Array.from(allImageItems).map(item => ({
-        element: item,
-        path: item.querySelector('img').src,
-        folder: item.querySelector('img').alt.split(' - ')[1]
-    }));
-    
-    // 현재 표시된 갤러리 이미지 인덱스
-    let currentImageIndex = 0;
-    
-    // 이미지 경로 배열 (실제 파일명 기준, 예시)
+    // 이미지 경로 배열 (실제 파일명 모두 추가)
     const imageList = [
-        // shade-of-blue
+        // 예시
         "/images/webp/shade-of-blue/shade-of-blue_1-min.webp",
         "/images/webp/shade-of-blue/shade-of-blue_2-min.webp",
-        "/images/webp/shade-of-blue/shade-of-blue_3-min.webp",
-        "/images/webp/shade-of-blue/shade-of-blue_4-min.webp",
-        "/images/webp/shade-of-blue/shade-of-blue_5-min.webp",
-        "/images/webp/shade-of-blue/shade-of-blue_6-min.webp",
-        "/images/webp/shade-of-blue/shade-of-blue_7-min.webp",
-        "/images/webp/shade-of-blue/shade-of-blue_8-min.webp",
-        "/images/webp/shade-of-blue/shade-of-blue_9-min.webp",
-        "/images/webp/shade-of-blue/shade-of-blue_10-min.webp",
-        "/images/webp/shade-of-blue/shade-of-blue_11-min.webp",
-        "/images/webp/shade-of-blue/shade-of-blue_12-min.webp",
-        // the-faceless (예시, 실제 파일명 모두 추가 필요)
-        "/images/webp/the-faceless/the-faceless_1-min.webp",
-        "/images/webp/the-faceless/the-faceless_2-min.webp",
-        "/images/webp/the-faceless/the-faceless_3-min.webp",
-        // ... (실제 모든 파일명 추가)
-        // glass-eye
-        "/images/webp/glass-eye/glass-eye_1-min.webp",
-        "/images/webp/glass-eye/glass-eye_2-min.webp",
-        // ...
-        // imperfect-jeonju
-        "/images/webp/imperfect-jeonju/imperfect-jeonju_1-min.webp",
-        "/images/webp/imperfect-jeonju/imperfect-jeonju_2-min.webp",
-        // ...
+        // ... (모든 파일명)
     ];
     
     // Fisher-Yates 셔플
@@ -64,99 +31,63 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    const images = [...imageList];
-    shuffle(images);
-    images.forEach(src => {
-        const div = document.createElement('div');
-        div.className = 'image-item';
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = '이청의 사진';
-        img.loading = 'lazy';
-        div.appendChild(img);
-        imageGrid.appendChild(div);
-    });
-    
-    // 초기 로딩 애니메이션
-    function startInitialAnimation() {
-        // 로딩 페이지 표시
-        loadingPage.style.display = 'flex';
-        
-        // 이미지 로드가 완료되면 슬라이드 업 애니메이션 실행
-        setTimeout(() => {
-            loadingPage.classList.add('slide-up');
-            
-            // 애니메이션 완료 후 로딩 페이지 숨기기
-            setTimeout(() => {
-                loadingPage.style.display = 'none';
-                loadingPage.classList.remove('slide-up');
-                
-                // 이미지 그리드 표시
-                imageGrid.classList.add('loaded');
-                
-                // 그리드 열 변환 애니메이션 시작
-                startGridColumnAnimation();
-            }, 1000);
-        }, 1500);
+    // 1. 이미지 그리드에 동적으로 이미지 삽입
+    function renderImages() {
+        imageGrid.innerHTML = '';
+        const images = [...imageList];
+        shuffle(images);
+        images.forEach(src => {
+            const div = document.createElement('div');
+            div.className = 'image-item';
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = '이청의 사진';
+            img.loading = 'lazy';
+            div.appendChild(img);
+            imageGrid.appendChild(div);
+        });
     }
     
-    // 그리드 열 변환 애니메이션 시작
-    function startGridColumnAnimation() {
-        let currentColumn = 1;
-        
-        // 2초 동안 1열부터 10열까지 순차적으로 변경
-        gridAnimationInterval = setInterval(() => {
-            currentColumn++;
-            if (currentColumn > 10) {
-                clearInterval(gridAnimationInterval);
-                columnCount = 10; // 최종적으로 10열로 설정
-                changeGridColumns(10);
-                isInitialLoad = false;
-                return;
-            }
-            
-            changeGridColumns(currentColumn);
-        }, 2000 / 9); // 2초를 9단계로 나눔 (1->2->3->4->5->6->7->8->9->10)
-    }
-    
-    // 이미지 로드 완료 시 애니메이션 적용
-    allImageItems.forEach(imageItem => {
-        const img = imageItem.querySelector('img');
-        if (img.complete) {
-            // 이미 로드된 이미지
-            setTimeout(() => {
-                imageItem.classList.add('loaded');
-            }, Math.random() * 500);
-        } else {
-            // 아직 로드 중인 이미지
-            img.onload = function() {
+    // 2. 이미지 삽입 후, 갤러리/애니메이션/이벤트 연결
+    let allImages = [];
+    let currentImageIndex = 0;
+    function setupImageEvents() {
+        const allImageItems = document.querySelectorAll('.image-item');
+        allImages = Array.from(allImageItems).map(item => ({
+            element: item,
+            path: item.querySelector('img').src
+        }));
+        allImageItems.forEach((imageItem, idx) => {
+            const img = imageItem.querySelector('img');
+            if (img.complete) {
                 setTimeout(() => {
                     imageItem.classList.add('loaded');
                 }, Math.random() * 500);
-            };
-        }
-        
-        // 이미지 클릭 이벤트
-        imageItem.addEventListener('click', () => {
-            const imgSrc = imageItem.querySelector('img').src;
-            openGallery(imgSrc);
+            } else {
+                img.onload = function() {
+                    setTimeout(() => {
+                        imageItem.classList.add('loaded');
+                    }, Math.random() * 500);
+                };
+            }
+            imageItem.addEventListener('click', () => {
+                openGallery(img.src);
+            });
         });
-    });
+    }
     
     // 갤러리 뷰 열기
     function openGallery(imagePath) {
         galleryImage.src = imagePath;
         galleryModal.classList.add('active');
         document.body.style.overflow = 'hidden'; // 스크롤 방지
-        
-        // 현재 이미지 인덱스 찾기
         currentImageIndex = allImages.findIndex(img => img.path === imagePath);
     }
     
     // 갤러리 뷰 닫기
     function closeGallery() {
         galleryModal.classList.remove('active');
-        document.body.style.overflow = ''; // 스크롤 복원
+        document.body.style.overflow = '';
     }
     
     // 이전 이미지로 이동
@@ -207,6 +138,48 @@ document.addEventListener('DOMContentLoaded', () => {
         gridToggle.textContent = columnCount;
     }
     
+    // 초기 로딩 애니메이션
+    function startInitialAnimation() {
+        // 로딩 페이지 표시
+        loadingPage.style.display = 'flex';
+        
+        // 이미지 로드가 완료되면 슬라이드 업 애니메이션 실행
+        setTimeout(() => {
+            loadingPage.classList.add('slide-up');
+            
+            // 애니메이션 완료 후 로딩 페이지 숨기기
+            setTimeout(() => {
+                loadingPage.style.display = 'none';
+                loadingPage.classList.remove('slide-up');
+                
+                // 이미지 그리드 표시
+                imageGrid.classList.add('loaded');
+                
+                // 그리드 열 변환 애니메이션 시작
+                startGridColumnAnimation();
+            }, 1000);
+        }, 1500);
+    }
+    
+    // 그리드 열 변환 애니메이션 시작
+    function startGridColumnAnimation() {
+        let currentColumn = 1;
+        
+        // 2초 동안 1열부터 10열까지 순차적으로 변경
+        gridAnimationInterval = setInterval(() => {
+            currentColumn++;
+            if (currentColumn > 10) {
+                clearInterval(gridAnimationInterval);
+                columnCount = 10; // 최종적으로 10열로 설정
+                changeGridColumns(10);
+                isInitialLoad = false;
+                return;
+            }
+            
+            changeGridColumns(currentColumn);
+        }, 2000 / 9); // 2초를 9단계로 나눔 (1->2->3->4->5->6->7->8->9->10)
+    }
+    
     // 이벤트 리스너 설정
     function setupEventListeners() {
         // 갤러리 닫기 버튼
@@ -237,6 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // 페이지 초기화
+    renderImages();
+    setupImageEvents();
     startInitialAnimation();
     setupEventListeners();
 }); 
