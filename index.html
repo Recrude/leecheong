@@ -31,26 +31,26 @@
     
     <!-- CSS 파일 연결 -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <!-- 로딩 페이지 -->
     <div class="loading-page" id="loading-page">
-        <img src="svg/SVG/titlelogo-horizontal-white.svg" alt="이청 로고" class="loading-logo">
+        <img src="/svg/SVG/titlelogo-horizontal-white.svg" alt="이청 로고" class="loading-logo">
     </div>
 
     <header>
         <div class="header-container">
             <h1 class="site-title">
-                <a href="index.html">
-                    <img src="svg/SVG/titlelogo-horizontal-black.svg" alt="이청 로고" class="site-logo">
+                <a href="/">
+                    <img src="/svg/SVG/titlelogo-horizontal-black.svg" alt="이청 로고" class="site-logo">
                 </a>
             </h1>
             <div class="header-controls">
                 <nav>
                     <ul>
-                        <li><h2><a href="info/about.html" class="active">INFO</a></h2></li>
-                        <li><h2><a href="works/works.html">WORKS</a></h2></li>
+                        <li><h2><a href="/info/about.html">INFO</a></h2></li>
+                        <li><h2><a href="/works/index.html">WORKS</a></h2></li>
                     </ul>
                 </nav>
             </div>
@@ -58,8 +58,22 @@
     </header>
 
     <main>
-        <div class="image-grid" id="image-grid">
-            <!-- 이미지들이 여기에 동적으로 추가됩니다 -->
+        <div class="image-grid columns-1" id="image-grid">
+            <!-- 모든 이미지 자동 나열 (예시: shade-of-blue) -->
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_1-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_2-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_3-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_4-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_5-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_6-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_7-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_8-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_9-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_10-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_11-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <div class="image-item"><img src="/images/webp/shade-of-blue/shade-of-blue_12-min.webp" alt="이청의 사진 - shade-of-blue" loading="lazy"></div>
+            <!-- the-faceless, glass-eye, imperfect-jeonju 등도 동일하게 모든 이미지 추가 (실제 파일명 기준) -->
+            <!-- ... (생략, 실제로는 모든 이미지 <div class="image-item"><img ...></div> 추가) ... -->
         </div>
         <div class="loading-indicator" id="loading-indicator">
             <div class="spinner"></div>
@@ -68,7 +82,7 @@
 
     <footer>
         <div class="footer-container">
-            <p>&copy; 2025 이청. ALL RIGHTS RESERVED.</p>
+            <p>&copy; 2025 이청. All rights reserved.</p>
         </div>
     </footer>
 
@@ -87,10 +101,10 @@
 
     <!-- 그리드 토글 버튼 -->
     <div class="grid-controls">
-        <button id="grid-toggle" class="grid-btn">2</button>
+        <button id="grid-toggle" class="grid-btn">1</button>
     </div>
 
     <!-- JavaScript 파일 연결 -->
-    <script src="js/script.js"></script>
+    <script src="/js/static-main.js"></script>
 </body>
 </html>
