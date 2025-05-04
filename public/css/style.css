@@ -97,6 +97,7 @@ button {
     cursor: pointer;
     font: inherit;
     -webkit-appearance: button;
+    appearance: button;
     text-transform: none;
     overflow: visible;
     padding: 0;
@@ -192,15 +193,74 @@ h2 {
 }
 
 .header-container {
-    max-width: 100%;
-    height: 100%;
+    width: 90vw;
+    max-width: 1477px;
+    min-width: 320px;
+    aspect-ratio: 1477 / 222;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    align-items: flex-end;
+    height: auto;
+    position: relative;
     padding: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    align-items: top;
-    align-self: flex-start;
+}
+
+.header-title {
+    flex-basis: 81.5%; /* 첨부 이미지 기준 한글+영문 영역 비율 */
+    font-size: calc(180vw / 14.77);
+    font-family: 'Apple SD Gothic Neo', 'sans-serif';
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+    display: flex;
+    align-items: flex-end;
+    padding: 0;
+    margin: 0;
+}
+
+.header-nav {
+    flex-basis: 18.5%; /* INFO/WORKS 영역 비율 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.header-link {
+    display: block;
+    font-size: calc(40vw / 14.77);
+    font-family: 'Apple SD Gothic Neo', 'sans-serif';
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #000;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.header-link:hover,
+.header-link:focus {
+    color: #888;
+}
+
+@media (max-width: 600px) {
+    .header-container {
+        width: 100vw;
+        min-width: 0;
+    }
+    .header-title {
+        font-size: calc(80vw / 14.77);
+    }
+    .header-link {
+        font-size: calc(18vw / 14.77);
+    }
 }
 
 .site-title {
